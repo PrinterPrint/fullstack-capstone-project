@@ -13,6 +13,16 @@ MONGO_URL=mongodb://root:password_of_mongodb_instance@localhost:27017 <br>
 
 select "MongoDB CLI" in Skills Network Lab and open a new terminal (directing to import-mongo folder). <br>
 
+Select MongoDB CLI <br>
+`show databases` <br>
+`use giftdb` <br>
+`show collections` <br>
+`db.gifts.countDocuments()` --> result: 16 <br>
+`db.gifts.find({category: 'Living Room'}).limit(2)` --> result: 2 objects: Coffe Table and Couch <br>
+`db.gifts.find({id: '429'})` --> result: 1 object: Side Table <br>
+
+
+
 
 
 
