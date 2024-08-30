@@ -12,11 +12,7 @@ router.get('/', async (req, res) => {
         const collection = db.collection("gifts");
 
         // Task 3: Fetch all gifts using the collection.find method. Chain with toArray method to convert to JSON array
-        const gift = await collection.findOne({ _id: new ObjectId(id) });
-
-        if (!gift) {
-            return res.status(404).send('Gift not found');
-        }
+        const gifts = await collection.find({}).toArray();
 
         // Task 4: return the gifts using the res.json method
         res.json(gifts);
@@ -58,10 +54,14 @@ router.get('/:id', async (req, res) => {
 // Add a new gift
 router.post('/', async (req, res, next) => {
     try {
+        // Connect to MongoDB and get the collection
         const db = await connectToDatabase();
         const collection = db.collection("gifts");
-        const gift = await collection.insertOne(req.body);
 
+        // Connect to MongoDB and get the collection
+        const gift = await collection.insertOne(req.body);
+        
+        // Connect to MongoDB and get the collection
         res.status(201).json(gift.ops[0]);
     } catch (e) {
         next(e);
