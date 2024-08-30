@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const connectToDatabase = require('../models/db');
 const { ObjectId } = require('mongodb'); // Import ObjectId
+const logger = require('../logger');
 
 router.get('/', async (req, res) => {
     try {
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
         res.json(gifts);
 
     } catch (e) {
-        console.error('Error fetching gifts:', e);
+        logger.console.error('Error fetching gifts:', e);
         res.status(500).send('Error fetching gifts');
     }
 });
@@ -60,7 +61,7 @@ router.post('/', async (req, res, next) => {
 
         // Connect to MongoDB and get the collection
         const gift = await collection.insertOne(req.body);
-        
+
         // Connect to MongoDB and get the collection
         res.status(201).json(gift.ops[0]);
     } catch (e) {
