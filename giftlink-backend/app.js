@@ -1,71 +1,56 @@
+/*jshint esversion: 8 */
+require('dotenv').config();
 const express = require('express');
-const router = express.Router();
-const connectToDatabase = require('../models/db');
-const { ObjectId } = require('mongodb'); // Import ObjectId
+const cors = require('cors');
+const pinoLogger = require('./logger');
 
-router.get('/', async (req, res) => {
-    try {
-        // Task 1: Connect to MongoDB and store connection to db constant
-        const db = await connectToDatabase();
+const connectToDatabase = require('./models/db');
+const {loadData} = require("./util/import-mongo/index");
 
-        // Task 2: use the collection() method to retrieve the gift collection
-        const collection = db.collection("gifts");
 
-        // Task 3: Fetch all gifts using the collection.find method. Chain with toArray method to convert to JSON array
-        const gifts = await collection.find({}).toArray();
+const app = express();
+app.use("*",cors());
+const port = 3060;
 
-        // Task 4: return the gifts using the res.json method
-        res.json(gifts);
+// Connect to MongoDB; we just do this one time
+connectToDatabase().then(() => {
+    pinoLogger.info('Connected to DB');
+})
+    .catch((e) => console.error('Failed to connect to DB', e));
 
-    } catch (e) {
-        console.error('Error fetching gifts:', e);
-        res.status(500).send('Error fetching gifts');
-    }
+
+app.use(express.json());
+
+// Route files
+// Gift API Task 1: import the giftRoutes and store in a constant called giftroutes
+const giftRoutes = require('./routes/giftRoutes');
+
+// Search API Task 1: import the searchRoutes and store in a constant called searchRoutes
+const searchRoutes = require('./routes/searchRoutes');
+
+
+const pinoHttp = require('pino-http');
+const logger = require('./logger');
+
+app.use(pinoHttp({ logger }));
+
+// Use Routes
+// Gift API Task 2: add the giftRoutes to the server by using the app.use() method.
+app.use('/api/gifts', giftRoutes);
+
+// Search API Task 2: add the searchRoutes to the server by using the app.use() method.
+app.use('/api/search', searchRoutes);
+
+// Global Error Handler
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
 });
 
-// Get a specific gift by ID
+app.get("/",(req,res)=>{
+    res.send("Inside the server")
+})
 
-router.get('/:id', async (req, res) => {
-    try {
-        // Task 1: Connect to MongoDB and store connection to db constant
-        const db = await connectToDatabase();
-
-        // Task 2: use the collection() method to retrieve the gift collection
-        const collection = db.collection("gifts");
-
-        const id = req.params.id;
-
-        // Task 3: Find a specific gift by ID using the collection.fineOne method and store in constant called gift
-        const gift = await collection.findOne({ _id: new ObjectId(id)});
-
-        if (!gift) {
-            return res.status(404).send('Gift not found');
-        }
-
-        res.json(gift);
-    } catch (e) {
-        console.error('Error fetching gift:', e);
-        res.status(500).send('Error fetching gift');
-    }
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
 });
-
-
-
-// Add a new gift
-router.post('/', async (req, res, next) => {
-    try {
-        // Connect to MongoDB and get the collection
-        const db = await connectToDatabase();
-        const collection = db.collection("gifts");
-
-        // Connect to MongoDB and get the collection
-        const gift = await collection.insertOne(req.body);
-
-        // Connect to MongoDB and get the collection
-        res.status(201).json(gift.ops[0]);
-    } catch (e) {
-        next(e);
-    }
-});
-
-module.exports = router;
