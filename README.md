@@ -6,8 +6,10 @@
 Go to import-mongo folder <br>
 `cd /home/project/fullstack-capstone-project/giftlink-backend/util/import-mongo ` <br>
 
-Duplicate the .env.sample file, naming the new file .env. This file contains the username and password for MongoDB. <br>
+Duplicate the .env.sample file, naming the new file .env. <br> 
+This file contains the username and password for MongoDB. <br>
 MONGO_URL=mongodb://root:password_of_mongodb_instance@localhost:27017 <br>
+Change localhost with IP address otherwise it could happen that it won't work. <br>
 
 `npm install <br>`
 
