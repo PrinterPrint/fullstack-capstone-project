@@ -75,6 +75,9 @@ Express server that performs sentiment analysis by calling an external service. 
 > - details (details about gifts, user comments, only logged users can access, authentication check, error message) <br>
 > - search (fetch and display search results from API from other lab, user can search includ text-based input, age range, category, and condition of item) <br>
 ### The Landing Page
+- Applying Bootstrap classes <br>
+- Modifying `giftlink-frontend/public/home.html`. <br>
+- Adding missing HTML elements in ` giftlink-frontend/public/home.html` <br>
 ### MainPage and Navbar
 ### Register and Login Pages
 ### Details Page
