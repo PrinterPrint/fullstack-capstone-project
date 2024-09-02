@@ -11,8 +11,11 @@ This file contains the username and password for MongoDB. <br>
 MONGO_URL=mongodb://root:password_of_mongodb_instance@localhost:27017 <br>
 Change localhost with IP address otherwise it could happen that it won't work. <br>
 
-`npm install` <br>
+`npm install` in backend <br>
 In giftlink-backend install `npm install dotenv` <br>
+`npm start` in backend <br>
+`npm install` in frontend <br>
+`npm start` in frontend <br>
 
 select "MongoDB CLI" in Skills Network Lab and open a new terminal (directing to import-mongo folder). <br>
 
