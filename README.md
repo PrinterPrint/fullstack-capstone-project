@@ -52,7 +52,10 @@ searchRoutes.js
 
 ### Build a Sentiment Analysis Service Lab
 Express server that performs sentiment analysis by calling an external service.  Natural library using the node package manager (npm). <br>
-1) Initialize an Express server with the necessary middleware
+1) Initialize an Express server with the necessary middleware <br>
+- go to fullstack-capstone-project/sentiment
+- `cd /home/project/fullstack-capstone-project/sentiment`
+- `npm install natural`
 2) Create a POST /sentiment endpoint
 3) Extract the sentence parameter from the request body
 4) Call the external sentiment analysis service using Axios
