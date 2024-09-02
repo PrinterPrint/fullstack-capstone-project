@@ -21,7 +21,7 @@ Testing the code: <br>
 - npm install
 - npm run build
 - npm start
-- launch application in port 3000
+- launch application in port 3000 <br>
 Note (if it does not work): <br>
 `npm install` in backend <br>
 In giftlink-backend install `npm install dotenv` <br>
