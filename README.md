@@ -11,6 +11,18 @@ This file contains the username and password for MongoDB. <br>
 MONGO_URL=mongodb://root:password_of_mongodb_instance@localhost:27017 <br>
 Change localhost with IP address otherwise it could happen that it won't work. <br>
 
+Testing the code: <br>
+- .env file --> mongodDB pw
+- new terminal --> cd backend directory
+- npm install
+- launch application in port 3060
+- in giftlink-frontend .env file --> paste url from launching step in there
+- new terminal go to giftlink-frontend
+- npm install
+- npm run build
+- npm start
+- launch application in port 3000
+Note (if it does not work): <br>
 `npm install` in backend <br>
 In giftlink-backend install `npm install dotenv` <br>
 `npm start` in backend <br>
@@ -81,7 +93,7 @@ Express server that performs sentiment analysis by calling an external service. 
 ### The Landing Page
 - Applying Bootstrap classes <br>
 - Modifying and Adding missing HTML elements in `giftlink-frontend/public/home.html`. <br>
-- 
+
 ### MainPage and Navbar
 ### Register and Login Pages
 ### Details Page
