@@ -64,6 +64,22 @@ Express server that performs sentiment analysis by calling an external service. 
 6) Implement error handling for the Axios request
 7) Add logging for request processing and errors
 
+## Landing page and home page
+- HTML, CSS and React components used
+- main page which displays all the gifts
+- React components
+> - main page (home.html, home.css) <br>
+> - navigation (MainPage.js, Navbar.js) <br>
+> - register (manage form input states for user details, first name, last name, email, password) <br>
+> - login (manage form input states for user details, first name, last name, email, password) <br>
+> - details (details about gifts, user comments, only logged users can access, authentication check, error message) <br>
+> - search (fetch and display search results from API from other lab, user can search includ text-based input, age range, category, and condition of item) <br>
+### The Landing Page
+### MainPage and Navbar
+### Register and Login Pages
+### Details Page
+### Search Page
+
 
 
 
