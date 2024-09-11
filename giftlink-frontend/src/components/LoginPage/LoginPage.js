@@ -13,7 +13,7 @@ function LoginPage() {
       const handleLogin = async () => {
           console.log("Inside handleLogin");
           console.log(`Email: ${email}`);
-          console.log(`Password: ${password}`); // Avoid logging sensitive data in production
+          //console.log(`Password: ${password}`); // Avoid logging sensitive data in production
       };
 
         return (
