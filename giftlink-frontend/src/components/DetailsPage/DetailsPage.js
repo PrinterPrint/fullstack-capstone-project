@@ -94,9 +94,9 @@ return (
                         )}
                     </div>
                     // Task 6: Display gift details
-                    	<p><strong>Category:</strong> {gfit.category}</p>
+                    	<p><strong>Category:</strong> {gift.category}</p>
                     	<p><strong>Condition:</strong> {gift.condition}</p>
-                    	<p><strong>Date Added:</strong> {new Date(gift.dateAdded).toLocaleDateString()}</p>
+                    	<p><strong>Date Added:</strong> {new Date(gift.dateAdded).toLocaleDateString()} </p>
                     	<p><strong>Age (Years):</strong> {gift.age}</p>
                     	<p><strong>Description:</strong> {gift.description}</p>
                 </div>
