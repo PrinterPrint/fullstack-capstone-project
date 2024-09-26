@@ -1,36 +1,61 @@
 /* Style for image placeholder */
 .image-placeholder-large {
-    /* Task 1 styling */
-    {{insert code here}}
+    width: 100%;              /* Full width of the container */
+    height: 400px;            /* Fixed height */
+    position: relative;       /* For positioning internal elements if needed */
+    background-color: #f0f0f0; /* Light grey background */
+    display: flex;            /* Flexbox to center content */
+    justify-content: center;  /* Horizontally center */
+    align-items: center;      /* Vertically center */
 }
 
 /* Style for product image */
 .product-image-large {
-    /* Task 2 styling */
-    {{insert code here}}
+    width: 100%;              /* Ensure image takes full width */
+    height: 100%;             /* Ensure image takes full height */
+    object-fit: cover;        /* Cover the entire area without distorting aspect ratio */
 }
 
 /* Style for 'no image available' placeholder */
 .no-image-available-large {
-    /* Task 3 styling */
-    {{insert code here}}
+    display: flex;            /* Flexbox for centering */
+    justify-content: center;  /* Horizontally center the text */
+    align-items: center;      /* Vertically center the text */
+    background-color: #cccccc; /* Slightly darker grey for the placeholder */
+    font-size: 1.5rem;        /* Larger font size */
+    color: #666666;           /* Darker grey for the text */
+    width: 100%;              /* Full width */
+    height: 100%;             /* Full height */
+    text-align: center;       /* Center the text */
 }
 
-/* Style for card header */
+/* Task 4: Style for card header */
 .card-header {
-    /* Task 4 styling */
-    {{insert code here}}
+    background-color: #343a40; /* Dark theme background */
+    color: white;              /* White text for contrast */
+    padding: 15px;             /* Padding for spacing */
+    border-bottom: none;       /* Remove default border */
 }
 
-/* Style for details title */
+/* Task 5: Style for details title */
 .details-title {
-    /* Task 5 styling */
-    {{insert code here}}
+    font-size: 2rem;          /* Larger font for title */
+    color: white;             /* White text */
+    margin: 0;                /* Remove default margin */
 }
 
-/* Style for comments section */
+/* Task 6: Style for comments section */
 .comments-section {
-    /* Task 6 styling */
-    {{insert code here}}
+    margin-top: 20px;         /* Margin on top to create space */
+    padding: 15px;            /* Padding inside for spacing */
+    background-color: #f8f9fa; /* Light background to separate section */
+    border-radius: 8px;       /* Rounded corners for softer look */
 }
 
+.comment-author {
+    font-weight: bold;        /* Bold the author’s name */
+}
+
+.comment-text {
+    margin-left: 10px;        /* Indent comment text for readability */
+}
