@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 
 export default function Navbar() {
     return (
@@ -9,12 +9,11 @@ export default function Navbar() {
             </li>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
-
                     <li className="nav-item">
-                    <a className="nav-link" href="/home.html">Home</a> {/* Link to home.html */}
+                        <a className="nav-link" href="/home.html">Home</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/app">Gifts</a> {/* Updated Link */}
+                        <a className="nav-link" href="/app">Gifts</a>
                     </li>
                 </ul>
             </div>
