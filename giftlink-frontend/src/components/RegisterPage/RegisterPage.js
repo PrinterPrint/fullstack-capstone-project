@@ -43,6 +43,8 @@ function RegisterPage() {
 
             // Task 1: Access data coming from fetch API
             const json = await response.json();
+            console.log('json data', json);
+            console.log('er', json.error);
 
             if (response.ok) {
                 const data = await response.json();
