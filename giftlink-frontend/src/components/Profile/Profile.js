@@ -5,23 +5,23 @@ import {urlConfig} from '../../config';
 import { useAppContext } from '../../context/AuthContext';
 
 const Profile = () => {
-  const [userDetails, setUserDetails] = useState({});
- const [updatedDetails, setUpdatedDetails] = useState({});
- const {setUserName} = useAppContext();
- const [changed, setChanged] = useState("");
+    const [userDetails, setUserDetails] = useState({});
+    const [updatedDetails, setUpdatedDetails] = useState({});
+    const {setUserName} = useAppContext();
+    const [changed, setChanged] = useState("");
 
- const [editMode, setEditMode] = useState(false);
-  const navigate = useNavigate();
-  useEffect(() => {
+    const [editMode, setEditMode] = useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
     const authtoken = sessionStorage.getItem("auth-token");
     if (!authtoken) {
       navigate("/app/login");
     } else {
-      fetchUserProfile();
-    }
-  }, [navigate]);
+            fetchUserProfile();
+        }
+    }, [navigate]);
 
-  const fetchUserProfile = async () => {
+    const fetchUserProfile = async () => {
     try {
       const authtoken = sessionStorage.getItem("auth-token");
       const email = sessionStorage.getItem("email");
@@ -34,23 +34,23 @@ const Profile = () => {
 
                 setUserDetails(storedUserDetails);
                 setUpdatedDetails(storedUserDetails);
-              }
-} catch (error) {
-  console.error(error);
-  // Handle error case
-}
-};
+      }
+    } catch (error) {
+            console.error(error);
+         // Handle error case
+        }
+    };
 
 const handleEdit = () => {
-setEditMode(true);
-};
+    setEditMode(true);
+    };
 
 const handleInputChange = (e) => {
-setUpdatedDetails({
-  ...updatedDetails,
-  [e.target.name]: e.target.value,
-});
-};
+    setUpdatedDetails({
+        ...updatedDetails,
+        [e.target.name]: e.target.value,
+    });
+    };
 const handleSubmit = async (e) => {
   e.preventDefault();
 

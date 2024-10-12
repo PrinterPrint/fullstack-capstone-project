@@ -19,7 +19,7 @@ const logger = pino(); // Create a Pino logger instance
 // Step 1 - Task 4: Create JWT secret
 const JWT_SECRET = process.env.JWT_SECRET;
 
-const { body, validationResult } = require('express-validator'); // Task 1: Import express-validator
+
 
 // User Registration Route
 // Task 1: Connect to `giftsdb` in MongoDB through `connectToDatabase` in `db.js`
