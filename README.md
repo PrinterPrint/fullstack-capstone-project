@@ -15,6 +15,7 @@ Testing the code: <br>
 - .env file --> mongodDB pw
 - new terminal --> cd backend directory
 - npm install
+- npm start
 - launch application in port 3060
 - in giftlink-frontend .env file --> paste url from launching step in there
 - new terminal go to giftlink-frontend
