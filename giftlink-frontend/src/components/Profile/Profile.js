@@ -66,22 +66,32 @@ const handleSubmit = async (e) => {
     const payload = { ...updatedDetails };
     const response = await fetch(`${urlConfig.backendUrl}/api/auth/update`, {
       //Step 1: Task 1
+        method: 'PUT',
       //Step 1: Task 2
+        headers: {
+          "Authorization": `Bearer ${authtoken}`, // Pass the JWT toekn
+          "Content-Type": "application/json",  // Send data as JSON
+          "Email": email, // Identify user by email
+        },
       //Step 1: Task 3
+        body: JSON.stringify(payload)
     });
 
     if (response.ok) {
       // Update the user details in session storage
       //Step 1: Task 4
+        setUserName(updatedDetails.name);
       //Step 1: Task 5
-      setUserDetails(updatedDetails);
-      setEditMode(false);
+        sessionStorage.setItem("name", updatedDetails.name);
+
+        setUserDetails(updatedDetails);
+        setEditMode(false);
       // Display success message to the user
-      setChanged("Name Changed Successfully!");
-      setTimeout(() => {
-        setChanged("");
-        navigate("/");
-      }, 1000);
+        setChanged("Name Changed Successfully!");
+        setTimeout(() => {
+            setChanged("");
+            navigate("/");
+        }, 1000);
 
     } else {
       // Handle error case
