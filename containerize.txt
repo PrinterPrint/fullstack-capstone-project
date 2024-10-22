@@ -25,4 +25,81 @@ kubectl apply -f deploymongo.yml
 Use the following command to check if your Mongo service is ready:
 kubectl get deployments
 
-clone the code
+- clone the code
+- change to giftlink-backend
+
+- Export your SN Labs namespace and print it on the console as shown below below:
+MY_NAMESPACE=$(ibmcloud cr namespaces | grep sn-labs-)
+echo $MY_NAMESPACE
+
+- Create a Dockerfile by running the following command:
+touch Dockerfile
+
+- In .env file in backend add:
+MONGO_URL=mongodb://mongodb-service:27017
+JWT_SECRET=mysecret
+
+- Perform a docker build with the Dockerfile in the current directory.
+docker build . -t us.icr.io/$MY_NAMESPACE/giftapp
+
+- Next, push the image to the container registry:
+docker push us.icr.io/$MY_NAMESPACE/giftapp
+
+- New file in backend added:
+deployment.yml
+
+- Create the deployment using the following command and your deployment file:
+replace <the-name-of-your-image> with us.icr.io/sn-labs-username/giftapp, username needs to be replaced
+
+kubectl apply -f deployment.yml
+
+- Normally, we would add a service to our deployment; however, you will use port-forwarding in this environment to see the running application.
+kubectl port-forward deployment.apps/giftapp 3060:3060
+
+- Open new terminal and check if services are ready:
+kubectl get deployments
+
+- Open the backend and copy the URL
+first you see all items in json format.
+url: https://xxxxx-3060.theiadockernext-1-labs-prod-xxxxx.proxy.cognitiveclass.ai
+
+- In the project home directory (fullstack-capstone-project) create a new directory named giftwebsite.
+- Change to the directory and run npm init to initialize a new Node.js project.
+- Change to the directory and run npm init to initialize a new Node.js project.
+npm init
+- Run the following command to install express and cors:
+npm install express cors
+- create index.js
+- paste code in index.js
+
+- Change to your front-end directory.
+- Add the url link in env. file
+- npm install
+- Edit the scripts in the package.json file so it includes the following immediately after build.
+"postbuild": "cp -r build ../giftwebsite/",
+
+- Run the following command to build the client. This will build the client and add the client files to giftwebsite directory.
+npm run build
+
+- go back to giftwebsite directory
+- create Dockerfile
+- Export your SN Labs namespace and print it to the console using this command:
+MY_NAMESPACE=$(ibmcloud cr namespaces | grep sn-labs-)
+echo $MY_NAMESPACE
+
+- Perform a Docker build with the Dockerfile in the current directory.
+docker build . -t us.icr.io/$MY_NAMESPACE/giftwebsite
+
+- Push the Docker image to the container by running the following command:
+docker push us.icr.io/$MY_NAMESPACE/giftwebsite
+
+- Next, run the image in the container registry:
+docker run -p 9000:9000 us.icr.io/$MY_NAMESPACE/giftwebsite
+
+- Launch application, enter 9000 as the port, suffix the url with:
+ /home.html
+
+- deploy giftwebsite application on Code Engine
+ibmcloud ce application create --name giftwebsite --image us.icr.io/${SN_ICR_NAMESPACE}/giftwebsite --registry-secret icr-secret --port 9000
+
+https://giftwebsite.1ncozvnl55as.us-south.codeengine.appdomain.cloud
