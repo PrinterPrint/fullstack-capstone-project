@@ -1,0 +1,28 @@
+
+To delete previous sessions run the following command:
+kubectl get deployments | grep sn-labs-$USERNAME
+
+If you see that the mongodb and/or giftapp deployment already exists, delete it using these commands:
+kubectl delete deployment mongodb
+kubectl delete deployment giftapp
+
+Start with:
+ibmcloud cr images
+
+If you see any mongodb and/or giftapp images, please delete them using:
+ibmcloud cr image-rm us.icr.io/sn-labs-$USERNAME/mongodb:latest && docker rmi us.icr.io/sn-labs-$USERNAME/mongodb:latest
+ibmcloud cr image-rm us.icr.io/sn-labs-$USERNAME/giftapp:latest && docker rmi us.icr.io/sn-labs-$USERNAME/giftapp:latest
+
+
+To know the namespace:
+oc project
+
+sn-labs-$USERNAME$
+
+Create the deployment using the following command and your deployment file:
+kubectl apply -f deploymongo.yml
+
+Use the following command to check if your Mongo service is ready:
+kubectl get deployments
+
+clone the code
